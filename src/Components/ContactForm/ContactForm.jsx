@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { v4 as uuid } from "uuid";
 import styles from "./ContactForm.module.css";
 import { connect } from "react-redux";
-// import { addContact } from "../../redux/actions";
 import { contactsOperations, contactsSelectors } from "../../redux";
 
 class ContactForm extends Component {
@@ -43,7 +41,6 @@ class ContactForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // const id = uuid();
     this.addContact({ ...this.state });
     this.reset();
   };
@@ -55,8 +52,6 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      // {this.props.isLoading && <h1>Loading...</h1> }
-
       <form onSubmit={this.handleSubmit} className={styles.form}>
         <label className={styles.formLabel}>
           <p>Name</p>
@@ -93,16 +88,12 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // return { isLoading: contactsSelectors.getLoading(state) };
   return { contacts: contactsSelectors.getAllContacts(state) };
-  // return { contacts: state.contacts.items };
 };
 
 const mapDispatchToProps = {
   fetchContact: contactsOperations.fetchContact,
   addContact: contactsOperations.addContact,
-
-  // contactsOperations,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

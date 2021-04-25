@@ -25,16 +25,9 @@ const fetchContact = () => async (dispatch) => {
   } catch (error) {
     dispatch(fetchContactError(error));
   }
-  //   axios
-  //     .get("/contacts")
-  //     .then(({ data }) => dispatch(fetchContactSuccess(data)))
-  //     .catch((error) => dispatch(fetchContactError(error)));
 };
 
 const addContact = (user) => async (dispatch) => {
-  // console.log(user);
-  // const contact = { user };
-  // console.log(contact);
   dispatch(addContactRequest());
 
   try {
@@ -43,11 +36,6 @@ const addContact = (user) => async (dispatch) => {
   } catch (error) {
     dispatch(addContactError(error));
   }
-
-  //   axios
-  //     .post("/contacts", contact)
-  //     .then(({ data }) => dispatch(addContactSuccess(data)))
-  //     .catch((error) => dispatch(addContactError(error)));
 };
 
 const deleteContact = (id) => async (dispatch) => {
@@ -55,16 +43,11 @@ const deleteContact = (id) => async (dispatch) => {
 
   try {
     await axios.delete(`/contacts/${id}`);
-    // console.log(response);
+
     dispatch(deleteContactSuccess(id));
   } catch (error) {
     dispatch(deleteContactError(error));
   }
-
-  //   axios
-  //     .delete(`/contacts/${id}`)
-  //     .then(() => dispatch(deleteContactSuccess(id)))
-  //     .catch((error) => dispatch(deleteContactError(error)));
 };
 
 const toggleContact = ({ id, completed }) => async (dispatch) => {
@@ -77,11 +60,6 @@ const toggleContact = ({ id, completed }) => async (dispatch) => {
   } catch (error) {
     dispatch(toggleContactError(error));
   }
-
-  //   axios
-  //     .update(`/contacts/${id}`, update)
-  //     .then((data) => dispatch(toggleContactSuccess(data)))
-  //     .catch((error) => dispatch(toggleContactError(error)));
 };
 
 export default { addContact, deleteContact, toggleContact, fetchContact };

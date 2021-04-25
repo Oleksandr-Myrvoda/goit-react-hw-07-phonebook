@@ -2,8 +2,6 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import contactsReducer from "./contacts-reducer";
 
-// ============== PERSIST ==========
-
 import {
   persistStore,
   persistReducer,
